@@ -98,17 +98,23 @@ const App: React.FC = () => {
       <div className="skill-legend">
         <div className="legend-title">SYSTEM_MAP</div>
         {[
-          { part: 'HEAD/V-FIN', skill: 'TypeScript' },
-          { part: 'TORSO', skill: 'React.js' },
-          { part: 'THRUSTERS', skill: 'Node.js' },
-          { part: 'LEGS', skill: 'Cloudflare' },
-          { part: 'CANNON', skill: 'GraphQL' },
-          { part: 'SHIELD', skill: 'Databases' },
-          { part: 'SHOULDERS', skill: 'Drizzle.js' },
-          { part: 'ANTENNA', skill: 'Git' },
-          { part: 'ARMS', skill: 'Docker' },
+          { part: 'HEAD/V-FIN', skill: 'TypeScript', skillId: 'typescript' },
+          { part: 'TORSO', skill: 'React.js', skillId: 'react' },
+          { part: 'THRUSTERS', skill: 'Node.js', skillId: 'nodejs' },
+          { part: 'LEGS', skill: 'Cloudflare', skillId: 'cloudflare' },
+          { part: 'CANNON', skill: 'GraphQL', skillId: 'graphql' },
+          { part: 'SHIELD', skill: 'Databases', skillId: 'databases' },
+          { part: 'SHOULDERS', skill: 'Drizzle.js', skillId: 'drizzle' },
+          { part: 'ANTENNA', skill: 'Git', skillId: 'git' },
+          { part: 'ARMS', skill: 'Docker', skillId: 'docker' },
         ].map((item, index) => (
-          <div key={index} className="legend-item">
+          <div 
+            key={index} 
+            className="legend-item"
+            onMouseEnter={() => handlePartHover(item.skillId)}
+            onMouseLeave={() => handlePartHover(null)}
+            style={{ cursor: 'pointer' }}
+          >
             <span className="legend-part">{item.part}</span>
             <span className="legend-arrow">→</span>
             <span className="legend-skill">{item.skill}</span>

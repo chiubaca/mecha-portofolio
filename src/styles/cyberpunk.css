@@ -260,6 +260,14 @@ body::before {
   gap: 8px;
   font-size: 10px;
   margin-bottom: 6px;
+  transition: all 0.2s ease;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.legend-item:hover {
+  background: rgba(0, 255, 65, 0.1);
+  text-shadow: 0 0 10px var(--terminal-green);
 }
 
 .legend-part {
