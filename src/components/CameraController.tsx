@@ -12,8 +12,8 @@ interface CameraControllerProps {
 
 export const CameraController: React.FC<CameraControllerProps> = ({
   targetSkill,
-  defaultPosition = new Vector3(0, 2, 8),
-  defaultTarget = new Vector3(0, 1, 0)
+  defaultPosition = new Vector3(0, 3, 10),
+  defaultTarget = new Vector3(0, 2, 0)
 }) => {
   const { camera } = useThree()
   const lookAtRef = useRef(new Vector3())

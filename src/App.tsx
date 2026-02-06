@@ -50,7 +50,7 @@ const App: React.FC = () => {
     <div className="app-container">
       <div className="canvas-container">
         <Canvas
-          camera={{ position: [0, 2, 8], fov: 50 }}
+          camera={{ position: [0, 3, 10], fov: 50 }}
           gl={{ antialias: true, alpha: true }}
           style={{ background: 'transparent' }}
         >
@@ -98,11 +98,11 @@ const App: React.FC = () => {
       <div className="skill-legend">
         <div className="legend-title">SYSTEM_MAP</div>
         {[
-          { part: 'HEAD', skill: 'TypeScript' },
+          { part: 'HEAD/V-FIN', skill: 'TypeScript' },
           { part: 'TORSO', skill: 'React.js' },
-          { part: 'BACKPACK', skill: 'Node.js' },
+          { part: 'THRUSTERS', skill: 'Node.js' },
           { part: 'LEGS', skill: 'Cloudflare' },
-          { part: 'RIFLE', skill: 'GraphQL' },
+          { part: 'CANNON', skill: 'GraphQL' },
           { part: 'SHIELD', skill: 'Databases' },
           { part: 'SHOULDERS', skill: 'Drizzle.js' },
           { part: 'ANTENNA', skill: 'Git' },
