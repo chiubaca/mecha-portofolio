@@ -204,7 +204,7 @@ export const TerminalUI: React.FC<TerminalUIProps> = ({
           SYSTEM_ONLINE
         </div>
         <div className="terminal-stats">
-          SKILLS: 9 | STATUS: {selectedSkill ? 'ANALYZING' : hoveredSkill ? 'SCANNING' : 'IDLE'}
+          SKILLS: 10 | STATUS: {selectedSkill ? 'ANALYZING' : hoveredSkill ? 'SCANNING' : 'IDLE'}
         </div>
       </div>
     </div>

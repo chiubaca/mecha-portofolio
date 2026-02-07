@@ -280,65 +280,65 @@ export const GundamModel: React.FC<GundamModelProps> = ({
     m.push(cyl('foot_r_thruster', 0.1, 0.12, 0.1, 0.55, -1.12, 0.1, 'cloudflare', 4))
 
     // ═══════════════════════════════════════════════════════════════
-    // BEAM LASER CANNON (held in left hand) / GraphQL
+    // BEAM LASER CANNON (held in left hand) / Opencode
     // ═══════════════════════════════════════════════════════════════
     // --- Main barrel (very long) ---
-    m.push(cyl('cannon_barrel', 0.12, 0.12, 3.5, -1.55, 0.9, 2.4, 'graphql', 8, Math.PI / 2))
+    m.push(cyl('cannon_barrel', 0.12, 0.12, 3.5, -1.55, 0.9, 2.4, 'opencode', 8, Math.PI / 2))
     // Barrel shroud / heat sink rings
-    m.push(cyl('cannon_shroud_1', 0.18, 0.18, 0.08, -1.55, 0.9, 3.8, 'graphql', 8, Math.PI / 2))
-    m.push(cyl('cannon_shroud_2', 0.16, 0.16, 0.08, -1.55, 0.9, 3.4, 'graphql', 8, Math.PI / 2))
-    m.push(cyl('cannon_shroud_3', 0.17, 0.17, 0.08, -1.55, 0.9, 3.0, 'graphql', 8, Math.PI / 2))
+    m.push(cyl('cannon_shroud_1', 0.18, 0.18, 0.08, -1.55, 0.9, 3.8, 'opencode', 8, Math.PI / 2))
+    m.push(cyl('cannon_shroud_2', 0.16, 0.16, 0.08, -1.55, 0.9, 3.4, 'opencode', 8, Math.PI / 2))
+    m.push(cyl('cannon_shroud_3', 0.17, 0.17, 0.08, -1.55, 0.9, 3.0, 'opencode', 8, Math.PI / 2))
     // Muzzle flare / emitter
-    m.push(cyl('cannon_muzzle', 0.08, 0.2, 0.25, -1.55, 0.9, 4.2, 'graphql', 6, Math.PI / 2))
-    m.push(torus('cannon_muzzle_ring', 0.18, 0.03, -1.55, 0.9, 4.3, 'graphql', Math.PI / 2))
+    m.push(cyl('cannon_muzzle', 0.08, 0.2, 0.25, -1.55, 0.9, 4.2, 'opencode', 6, Math.PI / 2))
+    m.push(torus('cannon_muzzle_ring', 0.18, 0.03, -1.55, 0.9, 4.3, 'opencode', Math.PI / 2))
     // Receiver body (fat center section)
-    m.push(box('cannon_body', 0.45, 0.5, 0.8, -1.55, 0.9, 1.2, 'graphql'))
+    m.push(box('cannon_body', 0.45, 0.5, 0.8, -1.55, 0.9, 1.2, 'opencode'))
     // Top rail / scope mount
-    m.push(box('cannon_rail', 0.08, 0.08, 1.8, -1.55, 1.2, 2.0, 'graphql'))
+    m.push(box('cannon_rail', 0.08, 0.08, 1.8, -1.55, 1.2, 2.0, 'opencode'))
     // Scope
-    m.push(cyl('cannon_scope', 0.06, 0.06, 0.4, -1.55, 1.25, 2.3, 'graphql', 6, Math.PI / 2))
-    m.push(sphere('cannon_scope_lens', 0.07, -1.55, 1.25, 2.55, 'graphql'))
+    m.push(cyl('cannon_scope', 0.06, 0.06, 0.4, -1.55, 1.25, 2.3, 'opencode', 6, Math.PI / 2))
+    m.push(sphere('cannon_scope_lens', 0.07, -1.55, 1.25, 2.55, 'opencode'))
     // Energy cell / magazine
-    m.push(box('cannon_cell', 0.25, 0.45, 0.35, -1.55, 0.55, 1.2, 'graphql'))
-    m.push(oct('cannon_cell_core', 0.08, -1.55, 0.55, 1.2, 'graphql'))
+    m.push(box('cannon_cell', 0.25, 0.45, 0.35, -1.55, 0.55, 1.2, 'opencode'))
+    m.push(oct('cannon_cell_core', 0.08, -1.55, 0.55, 1.2, 'opencode'))
     // Stock / rear grip area
-    m.push(box('cannon_stock', 0.2, 0.35, 0.5, -1.55, 0.9, 0.45, 'graphql'))
-    m.push(box('cannon_stock_pad', 0.25, 0.2, 0.15, -1.55, 0.9, 0.15, 'graphql'))
+    m.push(box('cannon_stock', 0.2, 0.35, 0.5, -1.55, 0.9, 0.45, 'opencode'))
+    m.push(box('cannon_stock_pad', 0.25, 0.2, 0.15, -1.55, 0.9, 0.15, 'opencode'))
     // Under-barrel stabilizer
-    m.push(cyl('cannon_stab', 0.05, 0.05, 0.8, -1.55, 0.6, 2.6, 'graphql', 4, Math.PI / 2))
+    m.push(cyl('cannon_stab', 0.05, 0.05, 0.8, -1.55, 0.6, 2.6, 'opencode', 4, Math.PI / 2))
     // Side vents
-    m.push(box('cannon_vent_l', 0.05, 0.15, 0.4, -1.32, 0.9, 1.8, 'graphql'))
-    m.push(box('cannon_vent_r', 0.05, 0.15, 0.4, -1.78, 0.9, 1.8, 'graphql'))
+    m.push(box('cannon_vent_l', 0.05, 0.15, 0.4, -1.32, 0.9, 1.8, 'opencode'))
+    m.push(box('cannon_vent_r', 0.05, 0.15, 0.4, -1.78, 0.9, 1.8, 'opencode'))
     // Trigger guard
-    m.push(box('cannon_trigger', 0.12, 0.18, 0.06, -1.55, 0.7, 0.8, 'graphql'))
+    m.push(box('cannon_trigger', 0.12, 0.18, 0.06, -1.55, 0.7, 0.8, 'opencode'))
 
     // ═══════════════════════════════════════════════════════════════
-    // LARGE SHIELD (right arm) / Databases
+    // LARGE SHIELD (right arm) / D1
     // ═══════════════════════════════════════════════════════════════
     // Main shield body – tall angular slab
-    m.push(box('shield_main', 0.2, 2.8, 1.6, 2.0, 1.5, 0.4, 'databases'))
+    m.push(box('shield_main', 0.2, 2.8, 1.6, 2.0, 1.5, 0.4, 'd1'))
     // Outer frame / border
-    m.push(box('shield_top', 0.15, 0.12, 1.5, 2.0, 2.9, 0.4, 'databases'))
-    m.push(box('shield_bot', 0.15, 0.12, 1.4, 2.0, 0.1, 0.4, 'databases'))
-    m.push(box('shield_side_l', 0.15, 2.7, 0.1, 2.0, 1.5, -0.35, 'databases'))
-    m.push(box('shield_side_r', 0.15, 2.7, 0.1, 2.0, 1.5, 1.15, 'databases'))
+    m.push(box('shield_top', 0.15, 0.12, 1.5, 2.0, 2.9, 0.4, 'd1'))
+    m.push(box('shield_bot', 0.15, 0.12, 1.4, 2.0, 0.1, 0.4, 'd1'))
+    m.push(box('shield_side_l', 0.15, 2.7, 0.1, 2.0, 1.5, -0.35, 'd1'))
+    m.push(box('shield_side_r', 0.15, 2.7, 0.1, 2.0, 1.5, 1.15, 'd1'))
     // Center cross / emblem
-    m.push(box('shield_cross_v', 0.08, 1.8, 0.08, 2.12, 1.5, 0.4, 'databases'))
-    m.push(box('shield_cross_h', 0.08, 0.08, 1.0, 2.12, 1.5, 0.4, 'databases'))
+    m.push(box('shield_cross_v', 0.08, 1.8, 0.08, 2.12, 1.5, 0.4, 'd1'))
+    m.push(box('shield_cross_h', 0.08, 0.08, 1.0, 2.12, 1.5, 0.4, 'd1'))
     // Shield boss (center gem)
-    m.push(oct('shield_boss', 0.18, 2.15, 1.5, 0.4, 'databases'))
-    m.push(torus('shield_boss_ring', 0.25, 0.03, 2.14, 1.5, 0.4, 'databases', 0, Math.PI / 2))
+    m.push(oct('shield_boss', 0.18, 2.15, 1.5, 0.4, 'd1'))
+    m.push(torus('shield_boss_ring', 0.25, 0.03, 2.14, 1.5, 0.4, 'd1', 0, Math.PI / 2))
     // Upper chevron decoration
-    m.push(box('shield_chev_l', 0.06, 0.5, 0.06, 2.12, 2.3, 0.15, 'databases', 0, 0, 0.2))
-    m.push(box('shield_chev_r', 0.06, 0.5, 0.06, 2.12, 2.3, 0.65, 'databases', 0, 0, -0.2))
+    m.push(box('shield_chev_l', 0.06, 0.5, 0.06, 2.12, 2.3, 0.15, 'd1', 0, 0, 0.2))
+    m.push(box('shield_chev_r', 0.06, 0.5, 0.06, 2.12, 2.3, 0.65, 'd1', 0, 0, -0.2))
     // Lower spike / point
-    m.push(cone('shield_spike', 0.2, 0.6, 2.0, -0.3, 0.4, 'databases', 4))
+    m.push(cone('shield_spike', 0.2, 0.6, 2.0, -0.3, 0.4, 'd1', 4))
     // Arm mounting bracket
-    m.push(box('shield_mount_1', 0.15, 0.3, 0.15, 1.85, 1.8, 0.4, 'databases'))
-    m.push(box('shield_mount_2', 0.15, 0.3, 0.15, 1.85, 1.2, 0.4, 'databases'))
+    m.push(box('shield_mount_1', 0.15, 0.3, 0.15, 1.85, 1.8, 0.4, 'd1'))
+    m.push(box('shield_mount_2', 0.15, 0.3, 0.15, 1.85, 1.2, 0.4, 'd1'))
     // Inner reinforcement struts
-    m.push(box('shield_strut_1', 0.06, 2.2, 0.06, 2.06, 1.5, 0.05, 'databases'))
-    m.push(box('shield_strut_2', 0.06, 2.2, 0.06, 2.06, 1.5, 0.75, 'databases'))
+    m.push(box('shield_strut_1', 0.06, 2.2, 0.06, 2.06, 1.5, 0.05, 'd1'))
+    m.push(box('shield_strut_2', 0.06, 2.2, 0.06, 2.06, 1.5, 0.75, 'd1'))
 
     return m
   }, [])
