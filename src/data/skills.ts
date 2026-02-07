@@ -1,4 +1,5 @@
 import { Vector3 } from 'three'
+import { skillList } from './skillConfig'
 
 export interface Skill {
   id: string
@@ -14,11 +15,8 @@ export interface Skill {
   color: string
 }
 
-export const skills: Skill[] = [
-  {
-    id: 'typescript',
-    name: 'TypeScript',
-    category: 'CORE SYSTEM',
+const skillDetailsMap: Record<string, Omit<Skill, 'id' | 'name' | 'category'>> = {
+  typescript: {
     level: 95,
     description: 'Advanced type-safe development with strict null checks and advanced generics.',
     details: [
@@ -33,10 +31,7 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(0, 4.5, 0),
     color: '#00ff41'
   },
-  {
-    id: 'react',
-    name: 'React.js',
-    category: 'MAIN FRAMEWORK',
+  react: {
     level: 92,
     description: 'Component architecture with hooks, context, and modern patterns.',
     details: [
@@ -51,17 +46,14 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(0, 3.0, 0),
     color: '#00ff41'
   },
-  {
-    id: 'nodejs',
-    name: 'Node.js',
-    category: 'POWER SYSTEM',
-    level: 88,
-    description: 'Server-side runtime with event-driven architecture and streaming.',
+  opus46: {
+    level: 95,
+    description: 'Advanced language model propulsion system. Generates context-aware code solutions with reasoning capabilities.',
     details: [
-      'Event loop & asynchronous patterns',
-      'Streams & buffer management',
-      'Cluster & worker threads',
-      'Native addons & N-API'
+      'Advanced reasoning & problem solving',
+      'Code architecture planning',
+      'Complex refactoring operations',
+      'Multi-step problem decomposition'
     ],
     bodyPart: 'BACKPACK // THRUSTERS',
     meshNames: ['bp_', 'backpack', 'engine', 'thruster', 'nozzle', 'fuel'],
@@ -69,11 +61,8 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(0, 3.2, -1),
     color: '#00ff41'
   },
-  {
-    id: 'cloudflare',
-    name: 'Cloudflare Workers',
-    category: 'TURBO THRUSTERS',
-    level: 85,
+  cloudflare: {
+    level: 90,
     description: 'Edge computing with V8 isolates for global low-latency execution.',
     details: [
       'V8 isolates & cold start optimization',
@@ -87,17 +76,14 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(0, 0, 0),
     color: '#00ff41'
   },
-  {
-    id: 'graphql',
-    name: 'GraphQL',
-    category: 'WEAPON SYSTEM',
-    level: 82,
-    description: 'Query language with type-safe schemas and efficient data fetching.',
+  opencode: {
+    level: 92,
+    description: 'AI-powered terminal interface for autonomous coding operations. Deploys code changes via natural language commands.',
     details: [
-      'Schema stitching & federation',
-      'Query complexity analysis',
-      'DataLoader & N+1 prevention',
-      'Subscriptions & real-time updates'
+      'Natural language code generation',
+      'Autonomous PR creation',
+      'Multi-file editing capabilities',
+      'Context-aware suggestions'
     ],
     bodyPart: 'BEAM LASER CANNON',
     meshNames: ['cannon', 'rifle', 'gun', 'weapon', 'barrel'],
@@ -105,17 +91,14 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(-1.5, 0.9, 2.5),
     color: '#00ff41'
   },
-  {
-    id: 'databases',
-    name: 'Databases',
-    category: 'DEFENSE SYSTEM',
-    level: 87,
-    description: 'SQL and NoSQL expertise with query optimization and scaling.',
+  d1: {
+    level: 88,
+    description: 'Distributed SQL defense matrix. SQLite-compatible edge database with automatic replication.',
     details: [
-      'PostgreSQL & query optimization',
-      'MongoDB aggregation pipelines',
-      'Redis caching strategies',
-      'Database design & normalization'
+      'SQLite at the edge',
+      'Automatic read replication',
+      'Serverless pricing model',
+      'Zero-latency queries'
     ],
     bodyPart: 'TACTICAL SHIELD',
     meshNames: ['shield'],
@@ -123,35 +106,44 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(2.0, 1.5, 0.4),
     color: '#00ff41'
   },
-  {
-    id: 'drizzle',
-    name: 'Drizzle.js',
-    category: 'ARMOR PLATING',
-    level: 80,
-    description: 'Type-safe ORM with SQL-like syntax and lightweight footprint.',
+  aigateway: {
+    level: 85,
+    description: 'Intelligent request routing armor. Manages AI provider failover and rate limiting at the edge.',
     details: [
-      'Type-safe SQL queries',
-      'Schema migrations & versioning',
-      'Relations & joins inference',
-      'Edge runtime compatibility'
+      'Provider fallback mechanisms',
+      'Request caching strategies',
+      'Token usage management',
+      'Unified API interface'
     ],
-    bodyPart: 'SHOULDER ARMOR',
-    meshNames: ['shldr', 'shoulder'],
+    bodyPart: 'LEFT SHOULDER',
+    meshNames: ['shldr_l', 'shoulder_l'],
     cameraPosition: new Vector3(-3, 4.5, 4),
-    cameraTarget: new Vector3(0, 3.8, 0),
+    cameraTarget: new Vector3(-1.3, 3.8, 0),
     color: '#00ff41'
   },
-  {
-    id: 'git',
-    name: 'Git',
-    category: 'SYNC MODULE',
-    level: 90,
-    description: 'Version control with advanced workflows and CI/CD integration.',
+  tanstackstart: {
+    level: 87,
+    description: 'Full-stack framework plating. Type-safe routing with server-side rendering capabilities.',
     details: [
-      'Advanced rebasing & cherry-picking',
-      'Git hooks & automation',
-      'Monorepo management',
-      'CI/CD pipeline design'
+      'SSR/SSG rendering modes',
+      'File-based routing',
+      'API route handlers',
+      'Streaming architecture'
+    ],
+    bodyPart: 'RIGHT SHOULDER',
+    meshNames: ['shldr_r', 'shoulder_r'],
+    cameraPosition: new Vector3(3, 4.5, 4),
+    cameraTarget: new Vector3(1.3, 3.8, 0),
+    color: '#00ff41'
+  },
+  hono: {
+    level: 89,
+    description: 'Ultralight communication protocol. Edge-first web framework for rapid signal transmission.',
+    details: [
+      'Zero-config deployment',
+      'Middleware composition',
+      'Web Standards API',
+      'Lightning-fast routing'
     ],
     bodyPart: 'COMM ANTENNA ARRAY',
     meshNames: ['antenna'],
@@ -159,17 +151,14 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(0, 5.2, 0),
     color: '#00ff41'
   },
-  {
-    id: 'docker',
-    name: 'Docker',
-    category: 'DEPLOYMENT MODULE',
-    level: 83,
-    description: 'Containerization with multi-stage builds and orchestration.',
+  zod: {
+    level: 91,
+    description: 'Runtime validation manipulators. Type-safe schema parsing with TypeScript-first architecture.',
     details: [
-      'Multi-stage builds optimization',
-      'Docker Compose & networking',
-      'Kubernetes fundamentals',
-      'Container security & scanning'
+      'TypeScript type inference',
+      'Schema composition',
+      'Error formatting',
+      'Transform pipelines'
     ],
     bodyPart: 'ARM HYDRAULICS',
     meshNames: ['arm_', 'hand_', 'elbow', 'wrist'],
@@ -177,7 +166,12 @@ export const skills: Skill[] = [
     cameraTarget: new Vector3(-1, 2.0, 0),
     color: '#00ff41'
   }
-]
+}
+
+export const skills: Skill[] = skillList.map(skillConfig => ({
+  ...skillConfig,
+  ...skillDetailsMap[skillConfig.id]
+}))
 
 export const getSkillById = (id: string): Skill | undefined => {
   return skills.find(skill => skill.id === id)

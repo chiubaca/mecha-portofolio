@@ -2,14 +2,17 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Stars, Float } from '@react-three/drei'
 import { getSkillById } from './data/skills'
+import { skillList } from './data/skillConfig'
 import { GundamModel } from './components/GundamModel'
 import { CameraController } from './components/CameraController'
 import { GridFloor } from './components/GridFloor'
 import { TerminalUI } from './components/TerminalUI'
+import { MobileSkillsPanel } from './components/MobileSkillsPanel'
 
 const App: React.FC = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null)
+  const [isTerminalExpanded, setIsTerminalExpanded] = useState(false)
 
   const hoveredSkillData = hoveredSkill ? getSkillById(hoveredSkill) : null
   const selectedSkillData = selectedSkill ? getSkillById(selectedSkill) : null
@@ -23,15 +26,18 @@ const App: React.FC = () => {
   const handlePartClick = useCallback((skillId: string) => {
     if (selectedSkill === skillId) {
       setSelectedSkill(null)
+      setIsTerminalExpanded(false)
     } else {
       setSelectedSkill(skillId)
       setHoveredSkill(null)
+      // Keep terminal collapsed on mobile - user must manually expand
     }
   }, [selectedSkill])
 
   const handleReset = useCallback(() => {
     setSelectedSkill(null)
     setHoveredSkill(null)
+    setIsTerminalExpanded(false)
   }, [])
 
   // Keyboard controls
@@ -93,31 +99,30 @@ const App: React.FC = () => {
         selectedSkill={selectedSkillData || null}
         hoveredSkill={hoveredSkillData || null}
         onReset={handleReset}
+        isExpanded={isTerminalExpanded}
+        onToggleExpand={() => setIsTerminalExpanded(!isTerminalExpanded)}
+      />
+
+      <MobileSkillsPanel
+        selectedSkill={selectedSkill}
+        hoveredSkill={hoveredSkill}
+        onSkillSelect={handlePartClick}
+        onSkillHover={handlePartHover}
       />
 
       <div className="skill-legend">
         <div className="legend-title">SYSTEM_MAP</div>
-        {[
-          { part: 'HEAD/V-FIN', skill: 'TypeScript', skillId: 'typescript' },
-          { part: 'TORSO', skill: 'React.js', skillId: 'react' },
-          { part: 'THRUSTERS', skill: 'Node.js', skillId: 'nodejs' },
-          { part: 'LEGS', skill: 'Cloudflare', skillId: 'cloudflare' },
-          { part: 'CANNON', skill: 'GraphQL', skillId: 'graphql' },
-          { part: 'SHIELD', skill: 'Databases', skillId: 'databases' },
-          { part: 'SHOULDERS', skill: 'Drizzle.js', skillId: 'drizzle' },
-          { part: 'ANTENNA', skill: 'Git', skillId: 'git' },
-          { part: 'ARMS', skill: 'Docker', skillId: 'docker' },
-        ].map((item, index) => (
+        {skillList.map((skill, index) => (
           <div 
             key={index} 
             className="legend-item"
-            onMouseEnter={() => handlePartHover(item.skillId)}
+            onMouseEnter={() => handlePartHover(skill.id)}
             onMouseLeave={() => handlePartHover(null)}
             style={{ cursor: 'pointer' }}
           >
-            <span className="legend-part">{item.part}</span>
+            <span className="legend-part">{skill.part}</span>
             <span className="legend-arrow">→</span>
-            <span className="legend-skill">{item.skill}</span>
+            <span className="legend-skill">{skill.name}</span>
           </div>
         ))}
       </div>

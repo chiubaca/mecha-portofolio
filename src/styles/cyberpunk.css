@@ -318,6 +318,100 @@ body::before {
   background: var(--terminal-green);
 }
 
+/* Mobile Skills Panel */
+.mobile-skills-panel {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  border-top: 1px solid var(--terminal-green-dim);
+  z-index: 20;
+  backdrop-filter: blur(5px);
+}
+
+.mobile-skills-scroll {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-skills-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+
+.mobile-skills-scroll::-webkit-scrollbar-track {
+  background: var(--terminal-bg);
+}
+
+.mobile-skills-scroll::-webkit-scrollbar-thumb {
+  background: var(--terminal-green-dim);
+}
+
+.mobile-skill-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  padding: 10px 8px;
+  background: transparent;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  color: var(--terminal-green);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.mobile-skill-btn:hover,
+.mobile-skill-btn.hovered {
+  background: rgba(0, 255, 65, 0.1);
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.mobile-skill-btn.active {
+  background: rgba(0, 255, 65, 0.2);
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+  text-shadow: 0 0 5px var(--terminal-green);
+}
+
+.skill-btn-label {
+  font-weight: bold;
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.skill-btn-part {
+  font-size: 8px;
+  color: var(--terminal-green-dim);
+  opacity: 0.7;
+}
+
+/* Mobile Toggle Button (hidden on desktop) */
+.mobile-toggle {
+  display: none;
+}
+
+/* Skill preview in collapsed terminal */
+.terminal-skill-preview {
+  color: var(--terminal-green);
+  text-shadow: 0 0 5px var(--terminal-green);
+}
+
+/* Compact info section (mobile collapsed state) */
+.terminal-compact-info {
+  display: none;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 1024px) {
   .terminal-container {
@@ -331,42 +425,184 @@ body::before {
 }
 
 @media (max-width: 768px) {
+  /* Terminal - Fixed to top */
   .terminal-container {
     position: fixed;
-    top: auto;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: auto;
     width: 100%;
-    max-height: 40vh;
+    max-height: auto;
     border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
   }
   
+  /* Collapsed state */
+  .terminal-container.collapsed {
+    max-height: none;
+  }
+  
+  .terminal-container.collapsed .terminal-content {
+    display: none;
+  }
+  
+  .terminal-container.collapsed .terminal-footer {
+    display: none;
+  }
+  
+  .terminal-container.collapsed .terminal-header {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+  }
+  
+  .terminal-container.collapsed .terminal-title {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .terminal-container.collapsed .terminal-controls {
+    gap: 6px;
+  }
+  
+  .terminal-container.collapsed .terminal-btn {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+  
+  /* Compact info section */
+  .terminal-container.collapsed .terminal-compact-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(0, 255, 65, 0.05);
+    border-bottom: 1px solid var(--terminal-green-dim);
+    gap: 12px;
+  }
+  
+  .compact-skill-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--terminal-green);
+    text-shadow: 0 0 5px var(--terminal-green);
+    flex-shrink: 0;
+  }
+  
+  .compact-body-part {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .compact-label {
+    color: var(--terminal-green-dim);
+    font-size: 9px;
+  }
+  
+  .compact-value {
+    color: var(--terminal-green);
+    font-weight: bold;
+  }
+  
+  .compact-expand-btn {
+    background: rgba(0, 255, 65, 0.15);
+    border-color: var(--terminal-green);
+    animation: pulse-glow 2s ease-in-out infinite;
+    flex-shrink: 0;
+    font-size: 9px;
+    padding: 5px 10px;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 65, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); }
+  }
+  
+  /* Expanded state */
+  .terminal-container.expanded {
+    max-height: 50vh;
+  }
+  
+  .terminal-container.expanded .terminal-content {
+    display: block;
+    max-height: calc(50vh - 100px);
+  }
+  
+  /* Terminal adjustments */
+  .terminal-header {
+    padding: 8px 12px;
+  }
+  
+  .terminal-title {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .terminal-btn {
+    font-size: 9px;
+    padding: 4px 6px;
+  }
+  
+  .terminal-content {
+    padding: 12px;
+    font-size: 11px;
+  }
+  
+  /* Hide desktop skill legend */
   .skill-legend {
     display: none;
   }
   
+  /* Show mobile skills panel */
+  .mobile-skills-panel {
+    display: block;
+  }
+  
+  /* Adjust controls hint */
   .controls-hint {
-    top: 20px;
-    right: 20px;
+    top: 70px;
+    right: 12px;
     bottom: auto;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
   }
   
   .hint-item {
-    font-size: 9px;
+    font-size: 8px;
     padding: 4px 8px;
   }
 }
 
 @media (max-width: 480px) {
-  .terminal-container {
-    max-height: 50vh;
+  .terminal-container.expanded {
+    max-height: 60vh;
+  }
+  
+  .terminal-container.expanded .terminal-content {
+    max-height: calc(60vh - 100px);
   }
   
   .terminal-content {
-    font-size: 11px;
+    font-size: 10px;
+  }
+  
+  .mobile-skill-btn {
+    min-width: 60px;
+    padding: 8px 6px;
+  }
+  
+  .skill-btn-label {
+    font-size: 10px;
+  }
+  
+  .skill-btn-part {
+    font-size: 7px;
   }
   
   .controls-hint {

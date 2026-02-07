@@ -129,13 +129,13 @@ export const GundamModel: React.FC<GundamModelProps> = ({
     // Neck joint
     m.push(cyl('neck_joint', 0.2, 0.25, 0.25, 0, 4.1, 0, 'typescript', 8))
 
-    // Communication antenna arrays / Git
-    m.push(cyl('antenna_l_base', 0.04, 0.04, 0.3, -0.5, 4.9, -0.1, 'git', 4))
-    m.push(cyl('antenna_l_tip', 0.02, 0.04, 0.5, -0.55, 5.25, -0.15, 'git', 4, 0, 0, 0.15))
-    m.push(cyl('antenna_r_base', 0.04, 0.04, 0.3, 0.5, 4.9, -0.1, 'git', 4))
-    m.push(cyl('antenna_r_tip', 0.02, 0.04, 0.5, 0.55, 5.25, -0.15, 'git', 4, 0, 0, -0.15))
-    m.push(sphere('antenna_l_orb', 0.05, -0.58, 5.5, -0.18, 'git'))
-    m.push(sphere('antenna_r_orb', 0.05, 0.58, 5.5, -0.18, 'git'))
+    // Communication antenna arrays / Hono.js
+    m.push(cyl('antenna_l_base', 0.04, 0.04, 0.3, -0.5, 4.9, -0.1, 'hono', 4))
+    m.push(cyl('antenna_l_tip', 0.02, 0.04, 0.5, -0.55, 5.25, -0.15, 'hono', 4, 0, 0, 0.15))
+    m.push(cyl('antenna_r_base', 0.04, 0.04, 0.3, 0.5, 4.9, -0.1, 'hono', 4))
+    m.push(cyl('antenna_r_tip', 0.02, 0.04, 0.5, 0.55, 5.25, -0.15, 'hono', 4, 0, 0, -0.15))
+    m.push(sphere('antenna_l_orb', 0.05, -0.58, 5.5, -0.18, 'hono'))
+    m.push(sphere('antenna_r_orb', 0.05, 0.58, 5.5, -0.18, 'hono'))
 
     // ═══════════════════════════════════════════════════════════════
     // TORSO / React.js  (y ≈ 2.2 - 4.0)
@@ -166,77 +166,77 @@ export const GundamModel: React.FC<GundamModelProps> = ({
     m.push(box('skirt_r', 0.15, 0.6, 0.6, 0.65, 2.0, 0, 'react', 0, 0, -0.1))
 
     // ═══════════════════════════════════════════════════════════════
-    // BACKPACK / ENGINES / Node.js  (behind torso)
+    // BACKPACK / ENGINES / Opus 4.6  (behind torso)
     // ═══════════════════════════════════════════════════════════════
     // Main pack body
-    m.push(box('bp_main', 1.1, 1.5, 0.6, 0, 3.2, -0.8, 'nodejs'))
+    m.push(box('bp_main', 1.1, 1.5, 0.6, 0, 3.2, -0.8, 'opus46'))
     // Thruster housings (large)
-    m.push(cyl('bp_thruster_l', 0.3, 0.25, 0.9, -0.5, 3.4, -1.15, 'nodejs', 6))
-    m.push(cyl('bp_thruster_r', 0.3, 0.25, 0.9, 0.5, 3.4, -1.15, 'nodejs', 6))
+    m.push(cyl('bp_thruster_l', 0.3, 0.25, 0.9, -0.5, 3.4, -1.15, 'opus46', 6))
+    m.push(cyl('bp_thruster_r', 0.3, 0.25, 0.9, 0.5, 3.4, -1.15, 'opus46', 6))
     // Thruster nozzles
-    m.push(cyl('bp_nozzle_l', 0.2, 0.28, 0.3, -0.5, 2.85, -1.15, 'nodejs', 6))
-    m.push(cyl('bp_nozzle_r', 0.2, 0.28, 0.3, 0.5, 2.85, -1.15, 'nodejs', 6))
+    m.push(cyl('bp_nozzle_l', 0.2, 0.28, 0.3, -0.5, 2.85, -1.15, 'opus46', 6))
+    m.push(cyl('bp_nozzle_r', 0.2, 0.28, 0.3, 0.5, 2.85, -1.15, 'opus46', 6))
     // Top stabilizer fins
-    m.push(box('bp_fin_l', 0.04, 0.8, 0.5, -0.5, 3.9, -1.0, 'nodejs', 0, 0, -0.1))
-    m.push(box('bp_fin_r', 0.04, 0.8, 0.5, 0.5, 3.9, -1.0, 'nodejs', 0, 0, 0.1))
+    m.push(box('bp_fin_l', 0.04, 0.8, 0.5, -0.5, 3.9, -1.0, 'opus46', 0, 0, -0.1))
+    m.push(box('bp_fin_r', 0.04, 0.8, 0.5, 0.5, 3.9, -1.0, 'opus46', 0, 0, 0.1))
     // Center booster
-    m.push(cyl('bp_center_boost', 0.15, 0.18, 0.6, 0, 2.7, -1.0, 'nodejs', 6))
+    m.push(cyl('bp_center_boost', 0.15, 0.18, 0.6, 0, 2.7, -1.0, 'opus46', 6))
     // Fuel lines
-    m.push(cyl('bp_fuel_l', 0.04, 0.04, 0.6, -0.3, 2.8, -0.55, 'nodejs', 4, 0.3))
-    m.push(cyl('bp_fuel_r', 0.04, 0.04, 0.6, 0.3, 2.8, -0.55, 'nodejs', 4, 0.3))
+    m.push(cyl('bp_fuel_l', 0.04, 0.04, 0.6, -0.3, 2.8, -0.55, 'opus46', 4, 0.3))
+    m.push(cyl('bp_fuel_r', 0.04, 0.04, 0.6, 0.3, 2.8, -0.55, 'opus46', 4, 0.3))
     // Heat exhaust vents
-    m.push(box('bp_vent_1', 0.8, 0.06, 0.3, 0, 3.6, -0.75, 'nodejs'))
-    m.push(box('bp_vent_2', 0.7, 0.06, 0.3, 0, 3.45, -0.75, 'nodejs'))
+    m.push(box('bp_vent_1', 0.8, 0.06, 0.3, 0, 3.6, -0.75, 'opus46'))
+    m.push(box('bp_vent_2', 0.7, 0.06, 0.3, 0, 3.45, -0.75, 'opus46'))
 
     // ═══════════════════════════════════════════════════════════════
-    // SHOULDERS / Drizzle.js
+    // SHOULDERS / AI Gateway (left) & Tanstack Start (right)
     // ═══════════════════════════════════════════════════════════════
-    // Left shoulder – layered armor plates
-    m.push(box('shldr_l_main', 0.9, 0.6, 0.75, -1.3, 3.7, 0, 'drizzle'))
-    m.push(box('shldr_l_top', 0.95, 0.12, 0.8, -1.3, 4.0, 0, 'drizzle'))
-    m.push(box('shldr_l_cap', 0.75, 0.08, 0.65, -1.3, 4.08, 0, 'drizzle'))
-    m.push(box('shldr_l_vent', 0.1, 0.35, 0.5, -1.78, 3.7, 0, 'drizzle'))
-    m.push(oct('shldr_l_gem', 0.1, -1.3, 3.7, 0.4, 'drizzle'))
-    // Right shoulder
-    m.push(box('shldr_r_main', 0.9, 0.6, 0.75, 1.3, 3.7, 0, 'drizzle'))
-    m.push(box('shldr_r_top', 0.95, 0.12, 0.8, 1.3, 4.0, 0, 'drizzle'))
-    m.push(box('shldr_r_cap', 0.75, 0.08, 0.65, 1.3, 4.08, 0, 'drizzle'))
-    m.push(box('shldr_r_vent', 0.1, 0.35, 0.5, 1.78, 3.7, 0, 'drizzle'))
-    m.push(oct('shldr_r_gem', 0.1, 1.3, 3.7, 0.4, 'drizzle'))
+    // Left shoulder – layered armor plates / AI Gateway
+    m.push(box('shldr_l_main', 0.9, 0.6, 0.75, -1.3, 3.7, 0, 'aigateway'))
+    m.push(box('shldr_l_top', 0.95, 0.12, 0.8, -1.3, 4.0, 0, 'aigateway'))
+    m.push(box('shldr_l_cap', 0.75, 0.08, 0.65, -1.3, 4.08, 0, 'aigateway'))
+    m.push(box('shldr_l_vent', 0.1, 0.35, 0.5, -1.78, 3.7, 0, 'aigateway'))
+    m.push(oct('shldr_l_gem', 0.1, -1.3, 3.7, 0.4, 'aigateway'))
+    // Right shoulder / Tanstack Start
+    m.push(box('shldr_r_main', 0.9, 0.6, 0.75, 1.3, 3.7, 0, 'tanstackstart'))
+    m.push(box('shldr_r_top', 0.95, 0.12, 0.8, 1.3, 4.0, 0, 'tanstackstart'))
+    m.push(box('shldr_r_cap', 0.75, 0.08, 0.65, 1.3, 4.08, 0, 'tanstackstart'))
+    m.push(box('shldr_r_vent', 0.1, 0.35, 0.5, 1.78, 3.7, 0, 'tanstackstart'))
+    m.push(oct('shldr_r_gem', 0.1, 1.3, 3.7, 0.4, 'tanstackstart'))
 
     // ═══════════════════════════════════════════════════════════════
-    // LEFT ARM + HAND (holds LASER CANNON) / Docker
+    // LEFT ARM + HAND (holds LASER CANNON) / Zod
     // ═══════════════════════════════════════════════════════════════
     // Upper arm
-    m.push(cyl('arm_l_upper', 0.22, 0.2, 1.1, -1.5, 3.0, 0, 'docker', 6))
-    m.push(sphere('arm_l_joint_top', 0.22, -1.5, 3.55, 0, 'docker'))
+    m.push(cyl('arm_l_upper', 0.22, 0.2, 1.1, -1.5, 3.0, 0, 'zod', 6))
+    m.push(sphere('arm_l_joint_top', 0.22, -1.5, 3.55, 0, 'zod'))
     // Elbow joint
-    m.push(sphere('arm_l_elbow', 0.2, -1.5, 2.4, 0, 'docker'))
+    m.push(sphere('arm_l_elbow', 0.2, -1.5, 2.4, 0, 'zod'))
     // Forearm
-    m.push(cyl('arm_l_fore', 0.2, 0.18, 1.0, -1.55, 1.8, 0.15, 'docker', 6, 0.2))
-    m.push(box('arm_l_fore_armor', 0.35, 0.6, 0.3, -1.55, 1.6, 0.2, 'docker'))
+    m.push(cyl('arm_l_fore', 0.2, 0.18, 1.0, -1.55, 1.8, 0.15, 'zod', 6, 0.2))
+    m.push(box('arm_l_fore_armor', 0.35, 0.6, 0.3, -1.55, 1.6, 0.2, 'zod'))
     // Wrist
-    m.push(cyl('arm_l_wrist', 0.12, 0.15, 0.15, -1.55, 1.2, 0.25, 'docker', 6))
+    m.push(cyl('arm_l_wrist', 0.12, 0.15, 0.15, -1.55, 1.2, 0.25, 'zod', 6))
     // Hand (gripping cannon)
-    m.push(box('hand_l', 0.25, 0.25, 0.35, -1.55, 1.0, 0.3, 'docker'))
-    m.push(box('hand_l_fingers', 0.2, 0.15, 0.25, -1.55, 0.85, 0.4, 'docker'))
+    m.push(box('hand_l', 0.25, 0.25, 0.35, -1.55, 1.0, 0.3, 'zod'))
+    m.push(box('hand_l_fingers', 0.2, 0.15, 0.25, -1.55, 0.85, 0.4, 'zod'))
 
     // ═══════════════════════════════════════════════════════════════
-    // RIGHT ARM + HAND (holds SHIELD) / Docker
+    // RIGHT ARM + HAND (holds SHIELD) / Zod
     // ═══════════════════════════════════════════════════════════════
     // Upper arm
-    m.push(cyl('arm_r_upper', 0.22, 0.2, 1.1, 1.5, 3.0, 0, 'docker', 6))
-    m.push(sphere('arm_r_joint_top', 0.22, 1.5, 3.55, 0, 'docker'))
+    m.push(cyl('arm_r_upper', 0.22, 0.2, 1.1, 1.5, 3.0, 0, 'zod', 6))
+    m.push(sphere('arm_r_joint_top', 0.22, 1.5, 3.55, 0, 'zod'))
     // Elbow
-    m.push(sphere('arm_r_elbow', 0.2, 1.5, 2.4, 0, 'docker'))
+    m.push(sphere('arm_r_elbow', 0.2, 1.5, 2.4, 0, 'zod'))
     // Forearm
-    m.push(cyl('arm_r_fore', 0.2, 0.18, 1.0, 1.55, 1.8, 0.15, 'docker', 6, 0.2))
-    m.push(box('arm_r_fore_armor', 0.35, 0.6, 0.3, 1.55, 1.6, 0.2, 'docker'))
+    m.push(cyl('arm_r_fore', 0.2, 0.18, 1.0, 1.55, 1.8, 0.15, 'zod', 6, 0.2))
+    m.push(box('arm_r_fore_armor', 0.35, 0.6, 0.3, 1.55, 1.6, 0.2, 'zod'))
     // Wrist
-    m.push(cyl('arm_r_wrist', 0.12, 0.15, 0.15, 1.55, 1.2, 0.25, 'docker', 6))
+    m.push(cyl('arm_r_wrist', 0.12, 0.15, 0.15, 1.55, 1.2, 0.25, 'zod', 6))
     // Hand (holding shield handle)
-    m.push(box('hand_r', 0.25, 0.25, 0.35, 1.55, 1.0, 0.3, 'docker'))
-    m.push(box('hand_r_fingers', 0.2, 0.15, 0.25, 1.55, 0.85, 0.4, 'docker'))
+    m.push(box('hand_r', 0.25, 0.25, 0.35, 1.55, 1.0, 0.3, 'zod'))
+    m.push(box('hand_r_fingers', 0.2, 0.15, 0.25, 1.55, 0.85, 0.4, 'zod'))
 
     // ═══════════════════════════════════════════════════════════════
     // LEGS / Cloudflare Workers  (y ≈ -2.5 to 2.0)

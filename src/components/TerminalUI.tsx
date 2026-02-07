@@ -5,12 +5,16 @@ interface TerminalUIProps {
   selectedSkill: Skill | null
   hoveredSkill: Skill | null
   onReset: () => void
+  isExpanded: boolean
+  onToggleExpand: () => void
 }
 
 export const TerminalUI: React.FC<TerminalUIProps> = ({
   selectedSkill,
   hoveredSkill,
-  onReset
+  onReset,
+  isExpanded,
+  onToggleExpand
 }) => {
   const [displayLines, setDisplayLines] = useState<string[]>([])
   const [isTyping, setIsTyping] = useState(false)
@@ -101,7 +105,7 @@ export const TerminalUI: React.FC<TerminalUIProps> = ({
   const activeSkill = selectedSkill || hoveredSkill
 
   return (
-    <div className="terminal-container">
+    <div className={`terminal-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
       <div className="terminal-header">
         <div className="terminal-title">
           <span className="terminal-prompt">&gt;&gt;</span>
@@ -113,6 +117,19 @@ export const TerminalUI: React.FC<TerminalUIProps> = ({
           </button>
         </div>
       </div>
+
+      {!isExpanded && activeSkill && (
+        <div className="terminal-compact-info">
+          <div className="compact-skill-name">{activeSkill.name.toUpperCase()}</div>
+          <div className="compact-body-part">
+            <span className="compact-label">TARGET:</span>
+            <span className="compact-value">{activeSkill.bodyPart}</span>
+          </div>
+          <button className="terminal-btn compact-expand-btn" onClick={onToggleExpand}>
+            [VIEW_DETAILS]
+          </button>
+        </div>
+      )}
 
       <div className="terminal-content">
         {!activeSkill ? (
